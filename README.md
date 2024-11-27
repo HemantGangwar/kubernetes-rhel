@@ -6,7 +6,7 @@ This Ansible role simplifies the deployment of Kubernetes clusters by automating
 
 Features
 
-    - 🚀 Automated Kubernetes Deployment: Deploys Kubernetes control plane and worker nodes seamlessly.
+    - 🚀 **Automated Kubernetes Deployment**: Deploys Kubernetes control plane and worker nodes seamlessly.
     - ✅ Pre- and Post-deployment Checks: Validates environment readiness and cluster health.
     - 🛠️ Customizable: Execute specific tasks using tags for flexibility.
     - 🔒 CRI-O Installation: Configures CRI-O as the container runtime.
