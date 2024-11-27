@@ -11,3 +11,17 @@ This Ansible role simplifies the deployment of Kubernetes clusters by automating
 2. Pre- and Post-deployment Checks: Validates environment readiness and cluster health.\
 3. Customizable: Execute specific tasks using tags for flexibility.\
 4. CRI-O Installation: Configures CRI-O as the container runtime.
+
+## Requirements
+
+### Supported Platforms:
+> Red Hat Enterprise Linux 8, 9\
+> CentOS 8, 9
+
+### Software Requirements:
+> Ansible 2.9+\
+> Python installed on all target nodes\
+> Selinux module loaded from collections.
+
+### Permissions:
+> sudo access is required on all target nodes.
