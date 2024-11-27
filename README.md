@@ -6,11 +6,10 @@ This Ansible role simplifies the deployment of Kubernetes clusters by automating
 
 ## Features
 
-
-1. Automated Kubernetes Deployment: Deploys Kubernetes control plane and worker nodes seamlessly.\
-2. Pre- and Post-deployment Checks: Validates environment readiness and cluster health.\
-3. Customizable: Execute specific tasks using tags for flexibility.\
-4. CRI-O Installation: Configures CRI-O as the container runtime.
+1. 🚀 Automated Kubernetes Deployment: Deploys Kubernetes control plane and worker nodes seamlessly.\
+2. ✅ Pre- and Post-deployment Checks: Validates environment readiness and cluster health.\
+3. 🛠️ Customizable: Execute specific tasks using tags for flexibility.\
+4. 🔒 CRI-O Installation: Configures CRI-O as the container runtime.
 
 ## Requirements
 
@@ -28,12 +27,12 @@ This Ansible role simplifies the deployment of Kubernetes clusters by automating
 
 ## Installation
 
-- Clone this repository:
+- ### Clone this repository:
 
 > git clone https://github.com/yourusername/kubernetes-deployment-role.git \
 > cd kubernetes-deployment-role
 
-Usage
+- ### Usage
 Example Playbook
 
 Create a playbook to invoke this role:
@@ -56,7 +55,7 @@ Same playbook invoked from Tower:
           roles:
             - kubSetup
 
-Run the playbook:
+- ### Run the playbook:
 
 > ansible-playbook kubernetes_ansible_playbook.yml
 
@@ -80,13 +79,13 @@ post-deployment | Validation and cleanup tasks after cluster deployment.
 
 Sr|Task|Description
 |-|----|-----------|
-1. | Pre-deployment Validation | Checks for environment readiness, such as OS version and required packages.
-2. | Common Setup | Installs dependencies and common configurations.
-3. | CRI-O Installation | Installs CRI-O as the container runtime.
-4. | Kubernetes Installation | Deploys the Kubernetes control plane.
-5. | Master Node Configuration | Configures the Kubernetes Master node and generates the join command for workers.
-6. | Worker Node Configuration | Applies the join command to configure worker nodes.
-7. | Post-deployment Validation | Performs cluster health checks and validation.
+1 | Pre-deployment Validation | Checks for environment readiness, such as OS version and required packages.
+2 | Common Setup | Installs dependencies and common configurations.
+3 | CRI-O Installation | Installs CRI-O as the container runtime.
+4 | Kubernetes Installation | Deploys the Kubernetes control plane.
+5 | Master Node Configuration | Configures the Kubernetes Master node and generates the join command for workers.
+6 | Worker Node Configuration | Applies the join command to configure worker nodes.
+7 | Post-deployment Validation | Performs cluster health checks and validation.
 
 ## Contributing
 
