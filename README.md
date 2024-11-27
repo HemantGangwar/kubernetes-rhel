@@ -29,6 +29,12 @@ This Ansible role simplifies the deployment of Kubernetes clusters by automating
 
 ### Permissions:
 > sudo access is required on all target nodes.
+>
+
+## Structure
+
+<img width="286" alt="image" src="https://github.com/user-attachments/assets/26edfeac-030a-4fb5-8b14-4468e6dc450c">
+
 
 ## Installation
 
@@ -75,6 +81,7 @@ master | Tasks specific to Kubernetes Master node setup.
 worker | Tasks specific to Kubernetes Worker node setup.
 deployment | Deployment-related tasks for cluster nodes.
 post-deployment | Validation and cleanup tasks after cluster deployment.
+always | Logs the start and end of the deployment process.
 
 ### Run specific tags:
 
