@@ -1,21 +1,26 @@
+![image](https://user-images.githubusercontent.com/38517925/86527948-5f983e80-bec1-11ea-9be7-03a6cc7792c8.png)
+
 # Kubernetes Deployment Role
 
 ## Overview
 
 This Ansible role simplifies the deployment of Kubernetes clusters by automating the setup of master and worker nodes, CRI-O installation, and essential pre- and post-deployment validation. It ensures a streamlined, repeatable process for Kubernetes installations across multiple environments.
 
+![image](https://user-images.githubusercontent.com/38517925/86524357-5abe9500-be97-11ea-8f15-d997b4ce7d3e.png)
+
 ## Features
 
-1. 🚀 Automated Kubernetes Deployment: Deploys Kubernetes control plane and worker nodes seamlessly.\
-2. ✅ Pre- and Post-deployment Checks: Validates environment readiness and cluster health.\
-3. 🛠️ Customizable: Execute specific tasks using tags for flexibility.\
-4. 🔒 CRI-O Installation: Configures CRI-O as the container runtime.
+1. 🚀 **Automated Kubernetes Deployment**: Deploys Kubernetes control plane and worker nodes seamlessly.\
+2. ✅ **Pre- and Post-deployment Checks**: Validates environment readiness and cluster health.\
+3. 🛠️ **Customizable**: Execute specific tasks using tags for flexibility.\
+4. 🔒 **CRI-O Installation**: Configures CRI-O as the container runtime.
 
 ## Requirements
 
 ### Supported Platforms:
 > Red Hat Enterprise Linux 8, 9\
-> CentOS 8, 9
+> CentOS 8, 9\
+> Minimum of 2 CPU and 2 GB of RAM
 
 ### Software Requirements:
 > Ansible 2.9+\
@@ -35,7 +40,7 @@ This Ansible role simplifies the deployment of Kubernetes clusters by automating
 - ### Usage
 Example Playbook
 
-Create a playbook to invoke this role:
+Create a playbook to invoke this role from Ansible **Control Node**:
 
         - name: Deploy Kubernetes Cluster
           hosts: all
@@ -47,7 +52,7 @@ Create a playbook to invoke this role:
           roles:
             - kubSetup
 
-Same playbook invoked from Tower:
+Same playbook invoked from **Tower**:
 
         - name: Deploy Kubernetes Cluster
           hosts: all
