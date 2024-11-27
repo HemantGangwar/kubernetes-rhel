@@ -6,10 +6,10 @@ This Ansible role simplifies the deployment of Kubernetes clusters by automating
 
 Features
 
-    íº€ Automated Kubernetes Deployment: Deploys Kubernetes control plane and worker nodes seamlessly.
-    âœ… Pre- and Post-deployment Checks: Validates environment readiness and cluster health.
-    í» ï¸ Customizable: Execute specific tasks using tags for flexibility.
-    í´’ CRI-O Installation: Configures CRI-O as the container runtime.
+    - ğŸš€ Automated Kubernetes Deployment: Deploys Kubernetes control plane and worker nodes seamlessly.
+    - âœ… Pre- and Post-deployment Checks: Validates environment readiness and cluster health.
+    - ğŸ› ï¸ Customizable: Execute specific tasks using tags for flexibility.
+    - ğŸ”’ CRI-O Installation: Configures CRI-O as the container runtime.
 
 Table of Contents
 
@@ -67,14 +67,16 @@ Run the playbook:
 ansible-playbook kubernetes_ansible_playbook.yml
 
 Tags
-Tag Name	Description
-validation	Pre-deployment validation tasks.
-setup	General setup tasks for the cluster.
-install	Installation tasks for CRI-O and Kubernetes.
-master	Tasks specific to Kubernetes Master node setup.
-worker	Tasks specific to Kubernetes Worker node setup.
-deployment	Deployment-related tasks for cluster nodes.
-post-deployment	Validation and cleanup tasks after cluster deployment.
+
+Tag Name |	Description
+|--------|------------------|
+validation | Pre-deployment validation tasks.
+setup	| General setup tasks for the cluster.
+install	| Installation tasks for CRI-O and Kubernetes.
+master	| Tasks specific to Kubernetes Master node setup.
+worker	| Tasks specific to Kubernetes Worker node setup.
+deployment | Deployment-related tasks for cluster nodes.
+post-deployment | Validation and cleanup tasks after cluster deployment.
 
 Run specific tags:
 
@@ -123,7 +125,7 @@ License
 This project is licensed under the MIT License.
 Author
 
-í±¤ Hemant Gangwar
+ğŸ‘¤ Hemant Gangwar
 Linux and Kubernetes Administrator
 Feel free to reach out at your.email@example.com or connect on LinkedIn.
 
