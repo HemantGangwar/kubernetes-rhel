@@ -1,0 +1,24 @@
+---
+- name: 1. Kubernetes initialization on master
+  shell: kubeadm init --apiserver-advertise-address=10.0.0.80 --pod-network-cidr=192.168.16.0/24
+  register: kubeadmin_init
+  when: not kubernetes_init_stat.stat.exists
+  become: true
+
+- name: 2. Creating requird directory structure
+  shell: "{{ item }}"
+  loop: "{{ POST_INITIALIZATION_COMMANDS }}"
+  when: not kubernetes_init_stat.stat.exists
+  become: false
+
+
+- name: 3. Generate join command
+  command: kubeadm token create --print-join-command
+  register: joinWorkerNodes
+  become: true
+
+- name: 13.4. Setting up the command use globally
+  set_fact: 
+     kubernetes_join_workers: "{{ joinWorkerNodes.stdout }}"
+  when: joinWorkerNodes.stdout is defined
+  become: true

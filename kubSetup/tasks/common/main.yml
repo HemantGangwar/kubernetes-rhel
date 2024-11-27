@@ -1,0 +1,59 @@
+  - name: 1. Permanently disabling Selinux in configuration file
+    ansible.posix.selinux:
+      policy: targeted
+      state: permissive
+
+  - name: 2. Switching off selinux temporarily
+    shell: setenforce 0
+    when: se_status.stdout == '1'
+
+  - name: 3. Disabling all local configured swap
+    shell: swapoff -a
+
+  - name: 4. Permanently disabling swap from mounts
+    mount:
+      path: swap
+      state: absent
+
+  - name: 5. Making sure that firewalld is running
+    service:
+      name: firewalld
+      state: started
+      enabled: true
+
+  - name: 6. Setting up firewall rules for master
+    firewalld:
+      port: "{{ item }}/tcp"
+      permanent: yes
+      immediate: yes
+      state: enabled
+    loop: "{{ FIREWALL_PORTS }}"
+
+  - name: 7. Installing the traffic control utility package
+    dnf:
+      name: iproute-tc
+      state: present
+
+  - name: 8. netfilter module checking
+    shell: lsmod | egrep -i "^br_netfilter|^overlay" | wc -l
+    register: netfilermodule
+
+  - name: 9. Installing | overlay, br_netfilter | module
+    shell: modprobe {{ item }}
+    loop:
+      - br_netfilter
+      - overlay
+
+  - name: 10. Setting bridged call iptables sysctl rules
+    sysctl:
+      name: "{{ item }}"
+      value: '1'
+      sysctl_file: /etc/sysctl.d/k8rules.conf
+      reload: yes
+    loop: "{{ SYSCTL_NF_CALL_RULES }}"
+    notify:
+      - 'Updating bridged iptable rules to kernel'
+
+  - name: 11. Force handlers to run now
+    meta: flush_handlers
+

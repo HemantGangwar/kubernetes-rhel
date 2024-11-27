@@ -1,0 +1,21 @@
+---
+- name: 1. Setting up repository
+  copy:
+    src: kubernetes.repo
+    dest: /etc/yum.repos.d/kubernetes.repo
+
+- name: 2. Install the required package
+  dnf:
+    name: "{{ item }}"
+    state: present
+    disable_excludes: kubernetes
+  loop: "{{ KUBERNETES_PACKAGES }}"
+  ignore_errors: true
+
+- name: 3. Start the relevant service
+  service:
+    name: "{{ KUBELET_SERVICE }}"
+    state: started
+    enabled: true
+  ignore_errors: true
+

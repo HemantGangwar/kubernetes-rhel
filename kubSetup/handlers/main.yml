@@ -1,0 +1,5 @@
+---
+# handlers file for kubSetup
+
+ - name: Updating bridged iptable rules to kernel
+   shell: sysctl --system

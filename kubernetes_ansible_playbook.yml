@@ -1,0 +1,11 @@
+---
+- name: KUBERNETES SETUP
+  hosts: all
+  become: true
+  vars_prompt:
+  - name: "KUBERNETES_MASTER" 
+    prompt : Provide kubernetes Master FQDN ?  
+    private: no
+  roles:
+          - kubSetup
+

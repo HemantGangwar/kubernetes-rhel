@@ -1,0 +1,87 @@
+--- 
+- name: 0. [ ------------------------- | Kubernetes deployment | ----------------------------]
+  tags:
+  - always
+  debug:
+      msg: "Kuberenetes deployment started ... "
+
+- name: 1. [ ------------------------- | Preliminary validation | ---------------------------]
+  tags:
+  - validation
+  - pre-deployment
+  include_tasks: pre-verify/main.yml 
+
+- name: 2. [ ------------------------- | Common Deployment | --------------------------------]
+  tags:
+  - common
+  - setup
+  include_tasks: common/main.yml
+
+- name: 3. [ ------------------------- | Crio Installation | --------------------------------]
+  tags:
+  - crio
+  - install
+  include_tasks: crio/main.yml
+
+- name: 4. [ ------------------------- | Kubernetes installation | --------------------------]
+  include_tasks: kub/main.yml
+  tags:
+  - kubernetes
+  - install
+
+- name: 5. Check if Kubernetes has already been initialized.
+  tags:
+  - validation
+  - init-check
+  stat:
+    path: /etc/kubernetes/admin.conf
+  register: kubernetes_init_stat
+
+- name: 6. Set Kubernetes master hostname
+  set_fact: 
+      kubernetes_master_name: "{{ KUBERNETES_MASTER }}"
+  tags:
+  - master
+  - setup
+
+- name: 7. [ ------------------------- | Master Setup | -------------------------------------]
+  tags:
+  - master
+  - setup
+  - deployment
+  include_tasks: kub/k8-master-setup.yml
+  when: 
+  - inventory_hostname == kubernetes_master_name
+
+- name: 8. Share kubernetes_join_workers fact with all nodes 
+  add_host: 
+    name: "{{ item }}" 
+    kubernetes_join_workers: "{{ kubernetes_join_workers }}"
+  with_inventory_hostnames: all
+  when: 
+  - item != kubernetes_master_name and kubernetes_join_workers is defined
+  tags:
+  - worker
+  - setup
+
+- name: 9. [ -------------------------- | Nodes/Worker Setup | -------------------------------]
+  include_tasks: kub/k8-worker-setup.yml
+  when: inventory_hostname != kubernetes_master_name
+  tags:
+  - worker
+  - setup
+  - deployment
+
+- name: 8. [ -------------------------- | POST step | ----------------------------------------]
+  include_tasks: post-setup/main.yml
+  when: 
+  - inventory_hostname == kubernetes_master_name
+  tags:
+  - post-deployment
+  - validation
+
+- name: 9. Ending with role deployment
+  debug:
+      msg: "Kuberenetes deployment ended ... "
+  tags:
+  - always
