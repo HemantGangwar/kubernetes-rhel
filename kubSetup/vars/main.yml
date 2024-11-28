@@ -34,4 +34,15 @@ POST_INITIALIZATION_COMMANDS:
   - "sudo chown $(id -u):$(id -g) ~/.kube/config"
 
 
+API_SERVER_IP: "10.0.0.80"
+INTERNAL_POD_NETWORK: "192.168.16.0/24"
+
+CLUSTER_JOIN_COMMAND: 'kubeadm token create --print-join-command'
+TIME_WAIT: 60
+
+# Networking End points
+
+CALICO_PATH: 'https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/calico.yaml'
+
+
 os_check: true

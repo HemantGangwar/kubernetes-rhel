@@ -1,17 +1,21 @@
 ---
-- name: 1. Setting up repository
-  copy:
-    src: cri-o.repo
-    dest: /etc/yum.repos.d/cri-o.repo
+- name: 1. Add a new DNF repository 
+  ansible.builtin.yum_repository: 
+    name: crio_repository
+    description: "Crio Package Repository" 
+    baseurl: https://pkgs.k8s.io/addons:/cri-o:/prerelease:/main/rpm/ 
+    gpgcheck: yes 
+    gpgkey: https://pkgs.k8s.io/addons:/cri-o:/prerelease:/main/rpm/repodata/repomd.xml.key 
+    enabled: yes
 
 - name: 2. Install the required package
-  dnf:
+  ansible.builtin.dnf:
     name: "{{ crio_pkg }}"
     state: present
   ignore_errors: true
 
 - name: 3. Start the relevant service
-  service:
+  ansible.builtin.service:
     name: "{{ crio_svc }}"
     state: started
     enabled: true

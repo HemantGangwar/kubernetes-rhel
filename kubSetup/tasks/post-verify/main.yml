@@ -1,0 +1,20 @@
+---
+- name: Displaying the nodes are running successfully as part of cluster
+  ansible.builtin.shell: 
+        kubectl get nodes
+  register: kubectl_nodes
+  become: false
+
+- name: Gathering details of ALL running pods
+  ansible.builtin.shell:
+        kubectl get pods --all-namespaces
+  register: kubectl_pods
+  become: false
+
+- name: Displaying the details of nodes
+  ansible.builtin.debug:
+        msg: "{{ kubectl_nodes.stdout_lines }}"
+
+- name: Displaying the details of pods
+  ansible.builtin.debug:
+        msg: "{{ kubectl_pods.stdout_lines }}"

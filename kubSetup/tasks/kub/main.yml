@@ -1,11 +1,16 @@
 ---
-- name: 1. Setting up repository
-  copy:
-    src: kubernetes.repo
-    dest: /etc/yum.repos.d/kubernetes.repo
+- name: 1. Add a new DNF repository 
+  ansible.builtin.yum_repository: 
+    name: kubernetes
+    description: "Kubernetes Package Repository" 
+    baseurl: https://pkgs.k8s.io/core:/stable:/v1.31/rpm/ 
+    gpgcheck: yes 
+    gpgkey: https://pkgs.k8s.io/core:/stable:/v1.31/rpm/repodata/repomd.xml.key 
+    enabled: yes
+    exclude: "kubelet,kubeadm,kubectl,cri-tools,kubernetes-cni"
 
 - name: 2. Install the required package
-  dnf:
+  ansible.builtin.dnf:
     name: "{{ item }}"
     state: present
     disable_excludes: kubernetes
@@ -13,7 +18,7 @@
   ignore_errors: true
 
 - name: 3. Start the relevant service
-  service:
+  ansible.builtin.service:
     name: "{{ KUBELET_SERVICE }}"
     state: started
     enabled: true

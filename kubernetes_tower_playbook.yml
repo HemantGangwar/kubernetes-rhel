@@ -1,0 +1,8 @@
+---
+- name: KUBERNETES Setup by Ansible Automation Platform
+  hosts: all
+  become: true
+  vars_prompt:
+  roles:
+          - kubSetup
+

@@ -1,5 +1,5 @@
 ---
 - name: 1 Joining Worker to | Kubernetes | cluster
-  shell: "{{ kubernetes_join_workers }}"
+  ansible.builtin.shell: "{{ kubernetes_join_workers }}"
   args:
     creates: /etc/kubernetes/kubelet.conf

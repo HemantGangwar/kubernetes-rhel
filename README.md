@@ -29,11 +29,9 @@ This Ansible role simplifies the deployment of Kubernetes clusters by automating
 
 ### Permissions:
 > sudo access is required on all target nodes.
->
 
 ## Structure
 
-<img width="286" alt="image" src="https://github.com/user-attachments/assets/26edfeac-030a-4fb5-8b14-4468e6dc450c">
 
 
 ## Installation
@@ -113,8 +111,7 @@ For significant changes, please open an issue to discuss your proposal.
 This project is licensed under the MIT License.
 ## Author
 
-  Hemant Gangwar
-Linux and Kubernetes Administrator
+Hemant Gangwar
 Feel free to reach out at your.email@example.com or connect on LinkedIn.
 
 This README.md is designed for GitHub with proper formatting, badges, and links. Let me know if you'd like to add any specific sections!
