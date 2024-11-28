@@ -86,6 +86,34 @@ always | Logs the start and end of the deployment process.
 
 > ansible-playbook kubernetes_ansible_playbook.yml --tags "validation,install"
 
+## Variables Used
+
+Variable Name | Type | Details
+|-------------|------|--------|
+KUBERNETES_MASTER | Prompt Variable | This will be holding the node fqdn which will be act as kubernetes master.
+kubernetes_master_name | Custom Fact | This will be holding the node fqdn which will be act as kubernetes master.
+FIREWALL_PORTS | Role Variable | This is an array of Firewall ports which need to be allowed. 
+netfilermodule | Register | Holding count of modules found for required installation
+SYSCTL_NF_CALL_RULES | Role Variable | Kernel network rules.
+crio_pkg | Role Variable | Container runtime cri-o package.
+crio_svc | Role Variable | Crio service name
+KUBERNETES_PACKAGES | Role Variable | Array of packages required for kubernetes installation.
+KUBELET_SERVICE | Role Variable | Kubelet service name
+API_SERVER_IP | Role Variable | IPv4 address of API
+INTERNAL_POD_NETWORK | Role Variable | Network segment for pods
+kubeadmin_init | Register | Register holding kubernetes initialization results
+joinWorkerNodes | Register | Join commands to be used by worker nodes
+NETWORK_TIME_WAIT | Role Variable | Wait time before networking setup
+CALICO_PATH | Role Variable | Calco url for networking
+VERIFICATION_TIME_WAIT | Role Variable | Wait time before Verifications
+kubectl_nodes | Register | Kubernetes cluster node information
+kubectl_pods | Register | Kubernetes cluster pods information
+
+
+
+
+
+
 ## Task Workflow
 
 Sr|Task|Description
