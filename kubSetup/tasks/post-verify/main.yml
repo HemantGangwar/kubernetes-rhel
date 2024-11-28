@@ -1,4 +1,8 @@
 ---
+- name: Sleeping the terminal for {{ TIME_WAIT }} sec
+  ansible.builtin.pause:
+    seconds: "{{ VERIFICATION_TIME_WAIT }}"
+
 - name: Displaying the nodes are running successfully as part of cluster
   ansible.builtin.shell: 
         kubectl get nodes

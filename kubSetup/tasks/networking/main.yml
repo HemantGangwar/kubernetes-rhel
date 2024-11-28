@@ -1,12 +1,12 @@
 ---
 - name: Sleeping the terminal for {{ TIME_WAIT }} sec
   ansible.builtin.pause:
-    seconds: "{{ TIME_WAIT }}"
+    seconds: "{{ NETWORK_TIME_WAIT }}"
 
 - name: Post-Requisite Configuring | Calico | network
   ansible.builtin.shell: kubectl apply -f "{{ CALICO_PATH }}" --validate=false --request-timeout=180s >> /tmp/calico_network.txt
   args: 
     creates: /tmp/calico_network.txt
-
+  become: false
 
 

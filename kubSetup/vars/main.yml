@@ -38,7 +38,8 @@ API_SERVER_IP: "10.0.0.80"
 INTERNAL_POD_NETWORK: "192.168.16.0/24"
 
 CLUSTER_JOIN_COMMAND: 'kubeadm token create --print-join-command'
-TIME_WAIT: 60
+VERIFICATION_TIME_WAIT: 60
+NETWORK_TIME_WAIT: 300
 
 # Networking End points
 
