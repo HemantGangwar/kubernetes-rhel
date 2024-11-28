@@ -32,6 +32,7 @@ This Ansible role simplifies the deployment of Kubernetes clusters by automating
 
 ## Structure
 
+![image](https://github.com/user-attachments/assets/5912f5c4-50aa-4b22-86b4-2bedc331b6bc)
 
 
 ## Installation
