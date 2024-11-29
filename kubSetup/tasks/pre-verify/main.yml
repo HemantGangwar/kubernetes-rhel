@@ -5,21 +5,25 @@
         - ansible_distribution == "RedHat" 
         - ansible_distribution_major_version in ["8", "9"] 
     fail_msg: "The operating system is not from supported list" 
-    success_msg: "The operating system is RHEL 8 or RHEL 9"
+    success_msg: "The operating system is from supported List"
   when:
         - os_check
 
-- name: Pre-Requisiste-2 | Verifying if enough resources Present |
-  ansible.builtin.fail: msg="Please make sure you have atlest 2000 MB RAM and 2 Cores"
-  when: 
-  - ansible_processor_nproc < 2 or ansible_memtotal_mb < 2000
-  - os_check
+- name: Pre-Requisiste-2 | Verifying if at least 2000 MB RAM and 2 cores present
+  ansible.builtin.assert: 
+    that: 
+        - ansible_processor_nproc >= 2
+        - ansible_memtotal_mb >= 2000 
+    fail_msg: "Please make sure you have at least 2000 MB RAM and 2 Cores" 
+    success_msg: "Sufficient resources are available"
+  when:
+        - os_check
 
-- name: Pre-Requisite-3 | Gathering selinux status |
+- name: Pre-Requisite-3 | Gathering selinux status 
   ansible.builtin.shell: getenforce | grep -i Enforcing | wc -l
   register: se_status
 
-- name: Pre-Prequsisite-4 | Validating presence of selinux module |
+- name: Pre-Prequsisite-4 | Validating presence of selinux module 
   ansible.builtin.shell: ansible-galaxy collection list 
   register: collections_list
   delegate_to: localhost
@@ -29,3 +33,4 @@
     that: 
       - "'ansible.posix' in collections_list.stdout" 
     fail_msg: "The ansible.posix.selinux module is not installed. Please install it before running this playbook."
+    success_msg: "Able to locate the relevant collection successfully"

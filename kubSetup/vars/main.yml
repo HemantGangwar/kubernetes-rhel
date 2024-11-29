@@ -1,6 +1,8 @@
 ---
 # vars file for kubSetup
 
+# Common variables setup actoss the machines
+
 FIREWALL_PORTS:
   - '6443'
   - '2379'
@@ -17,9 +19,12 @@ SYSCTL_NF_CALL_RULES:
   - net.bridge.bridge-nf-call-iptables
   - net.ipv4.ip_forward
 
+# Crio Specific variables
 
 crio_pkg: cri-o
 crio_svc: crio
+
+# Kubernetes Specific packages
 
 KUBERNETES_PACKAGES:
   - kubeadm
@@ -39,11 +44,13 @@ INTERNAL_POD_NETWORK: "192.168.16.0/24"
 
 CLUSTER_JOIN_COMMAND: 'kubeadm token create --print-join-command'
 VERIFICATION_TIME_WAIT: 60
-NETWORK_TIME_WAIT: 300
+NETWORK_TIME_WAIT: 60
 
 # Networking End points
 
 CALICO_PATH: 'https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/calico.yaml'
 
+# Systems booleans to control execution
 
 os_check: true
+ip_default: true

@@ -1,8 +1,16 @@
 ---
+- name: Set primary IP address as API Server IP
+  when:
+  - ip_default
+  ansible.builtin.set_fact: 
+    API_SERVER_IP: "{{ ansible_default_ipv4.address }}" 
+  
+
 - name: 1. Kubernetes initialization on master
   ansible.builtin.shell: "kubeadm init --apiserver-advertise-address={{ API_SERVER_IP }} --pod-network-cidr={{ INTERNAL_POD_NETWORK }}"
   register: kubeadmin_init
-  when: not kubernetes_init_stat.stat.exists
+  when: 
+  - not kubernetes_init_stat.stat.exists
   become: true
 
 - name: 2. Creating requird directory structure

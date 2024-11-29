@@ -1,5 +1,5 @@
 ---
-- name: Sleeping the terminal for {{ TIME_WAIT }} sec
+- name: Sleeping the terminal for {{ VERIFICATION_TIME_WAIT }} sec
   ansible.builtin.pause:
     seconds: "{{ VERIFICATION_TIME_WAIT }}"
 

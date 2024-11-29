@@ -57,7 +57,7 @@ Create a playbook to invoke this role from Ansible **Control Node**:
           roles:
             - kubSetup
 
-Same playbook invoked from **Tower**:
+Same playbook invoked from **ANSIBLE AUTOMATION PLATFORM (aka Tower)**:
 
         - name: Deploy Kubernetes Cluster
           hosts: all
@@ -140,7 +140,10 @@ For significant changes, please open an issue to discuss your proposal.
 This project is licensed under the MIT License.
 ## Author
 
-Hemant Gangwar
-Feel free to reach out at your.email@example.com or connect on LinkedIn.
+## About the Author
+
+**Hemant Gangwar** is a passionate Technology Enthusiast  with a keen interest in AI, DevOps, Automation, Linux and cloud technologies. With a robust background in scripting and infrastructure management, Hemant is dedicated to creating efficient and scalable solutions. When not coding, Hemant enjoys exploring the latest tech trends and contributing to open-source projects.
+
+Feel free to connect with Hemant Gangwar on [LinkedIn](hthttps://in.linkedin.com/in/hemant-gangwar-6a677b19) or check out more of their work on [GitHub](https://github.com/HemantGangwar).
 
 This README.md is designed for GitHub with proper formatting, badges, and links. Let me know if you'd like to add any specific sections!
