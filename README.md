@@ -144,6 +144,6 @@ This project is licensed under the MIT License.
 
 **Hemant Gangwar** is a passionate Technology Enthusiast  with a keen interest in AI, DevOps, Automation, Linux and cloud technologies. With a robust background in scripting and infrastructure management, Hemant is dedicated to creating efficient and scalable solutions. When not coding, Hemant enjoys exploring the latest tech trends and contributing to open-source projects.
 
-Feel free to connect with Hemant Gangwar on [LinkedIn](hthttps://in.linkedin.com/in/hemant-gangwar-6a677b19) or check out more of their work on [GitHub](https://github.com/HemantGangwar).
+Feel free to connect with Hemant Gangwar on [LinkedIn](https://in.linkedin.com/in/hemant-gangwar-6a677b19) or check out more of their work on [GitHub](https://github.com/HemantGangwar).
 
 This README.md is designed for GitHub with proper formatting, badges, and links. Let me know if you'd like to add any specific sections!

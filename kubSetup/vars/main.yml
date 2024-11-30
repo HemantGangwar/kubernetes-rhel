@@ -38,8 +38,6 @@ POST_INITIALIZATION_COMMANDS:
   - "sudo cp -i /etc/kubernetes/admin.conf ~/.kube/config"
   - "sudo chown $(id -u):$(id -g) ~/.kube/config"
 
-
-API_SERVER_IP: "10.0.0.80"
 INTERNAL_POD_NETWORK: "192.168.16.0/24"
 
 CLUSTER_JOIN_COMMAND: 'kubeadm token create --print-join-command'
@@ -53,4 +51,10 @@ CALICO_PATH: 'https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/man
 # Systems booleans to control execution
 
 os_check: true
+
+# This is for API server IP, if you want any other IP to be used other than default IPv4 address of masterdo below
+# ip_default: false
+# API_SERVER_IP: "xx.xx.xx.xx"    # Replace xx.xx.xx.xx with your machine IP address
 ip_default: true
+API_SERVER_IP: ""
+
