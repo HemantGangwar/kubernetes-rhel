@@ -26,7 +26,7 @@
 - name: Pre-Prequsisite-4 | Validating presence of selinux module 
   ansible.builtin.shell: ansible-galaxy collection list 
   register: collections_list
-  delegate_to: localhost
+  when: inventory_hostname == 'localhost'
 
 - name: Pre-Requisiste-5 | Check if ansible.posix.selinux is installed 
   ansible.builtin.assert: 
@@ -34,4 +34,4 @@
       - "'ansible.posix' in collections_list.stdout" 
     fail_msg: "The ansible.posix.selinux module is not installed. Please install it before running this playbook."
     success_msg: "Able to locate the relevant collection successfully"
-  delegate_to: localhost
+  when: inventory_hostname == 'localhost'
