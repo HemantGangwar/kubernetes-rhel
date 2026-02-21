@@ -155,4 +155,4 @@ This README.md is designed for GitHub with proper formatting, badges, and links.
 1. Limited validation of **ansible.posix.selinux** for ansible node itself.
 2. Added **conntrack-tools** as part of software installed to mitigate below error.
 
-[ERROR FileExisting-conntrack]: conntrack not found in system path
+<img width="45" height="55" alt="image" src="https://github.com/user-attachments/assets/78cb9b23-dae4-4905-a44b-81416762cd1a" /> [ERROR FileExisting-conntrack]: conntrack not found in system path
