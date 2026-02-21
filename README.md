@@ -147,3 +147,12 @@ This project is licensed under the MIT License.
 Feel free to connect with Hemant Gangwar on [LinkedIn](https://in.linkedin.com/in/hemant-gangwar-6a677b19) or check out more of their work on [GitHub](https://github.com/HemantGangwar).
 
 This README.md is designed for GitHub with proper formatting, badges, and links. Let me know if you'd like to add any specific sections!
+
+## Updates
+
+21-Feb-2026
+
+1. Limited validation of **ansible.posix.selinux** for ansible node itself.
+2. Added **conntrack-tools** as part of software installed to mitigate below error.
+
+[ERROR FileExisting-conntrack]: conntrack not found in system path

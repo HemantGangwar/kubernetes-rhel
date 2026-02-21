@@ -31,8 +31,11 @@
 
   - name: 7. Installing the traffic control utility package
     ansible.builtin.dnf:
-      name: iproute-tc
+      name: "{{ item }}"
       state: present
+    loop:
+      - conntrack-tools
+      - iproute-tc
 
   - name: 8. netfilter module checking
     ansible.builtin.shell: lsmod | egrep -i "^br_netfilter|^overlay" | wc -l

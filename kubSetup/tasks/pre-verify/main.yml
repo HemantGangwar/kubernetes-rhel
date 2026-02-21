@@ -34,3 +34,4 @@
       - "'ansible.posix' in collections_list.stdout" 
     fail_msg: "The ansible.posix.selinux module is not installed. Please install it before running this playbook."
     success_msg: "Able to locate the relevant collection successfully"
+  delegate_to: localhost
