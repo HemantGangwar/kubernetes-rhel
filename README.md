@@ -67,7 +67,10 @@ Same playbook invoked from **ANSIBLE AUTOMATION PLATFORM (aka Tower)**:
 
 - ### Run the playbook:
 
-> ansible-playbook kubernetes_ansible_playbook.yml
+Operation | Syntax | Notes
+|---------|--------|------|
+Setting up a Fresh cluster |  **ansible-playbook kubernetes_ansible_playbook.yml** | Keep all the nodes in the provided inventory FIle.
+Adding a node to an exisiting cluster | **ansible-playbook kubernetes_ansible_playbook.yml -l <new_node_fqdn>,<cluster_master_fqdn>** | New node will retrieve the checksum and add as a worker to cluster.
 
 ## Tags
 
